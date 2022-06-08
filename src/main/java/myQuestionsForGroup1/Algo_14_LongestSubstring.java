@@ -1,8 +1,9 @@
-package myQuestionForGroup1;
+package myQuestionsForGroup1;
 
-import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,8 +28,8 @@ Sample Output = "cydeo"
 
  */
 public class Algo_14_LongestSubstring {
-    @DataProvider(name = "input")
-    public Object[][] inputMethod() {
+   // @DataProvider(name = "input")
+    public static Object[][] inputMethod() {
         return new Object[][]{
                 {"abcabcbb", "abc"},
                 {"clementisacap", "mentisac"},
@@ -44,12 +45,14 @@ public class Algo_14_LongestSubstring {
         };
     }
 
-    @Test(dataProvider = "input")
+  //  @Test(dataProvider = "input")
+    @ParameterizedTest
+    @MethodSource("inputMethod")
     public void test(String input, String expected) {
-        System.out.println(input + " " + expected);
-        Assert.assertEquals(longestNonDuplicateString(input), expected);
-        // Assert.assertEquals(bestLongestSubstringWithoutDuplication(input), expected);
-        //  Assert.assertEquals(removeDuplicate(input), expected);
+      //  System.out.println(input + " " + expected);
+        Assertions.assertEquals(longestNonDuplicateString(input), expected);
+        // Assertions.assertEquals(bestLongestSubstringWithoutDuplication(input), expected);
+        //  Assertions.assertEquals(removeDuplicate(input), expected);
     }
 
     public String longestNonDuplicateString (String text){  // Gadir
